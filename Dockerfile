@@ -1,9 +1,11 @@
 FROM quay.io/trueaccord/miniubuntu:latest
 MAINTAINER TrueAccord
 
-RUN curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh | sh
+# From https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh
+RUN curl https://packages.treasuredata.com/GPG-KEY-td-agent | apt-key add - && \
+ echo "deb http://packages.treasuredata.com/2/ubuntu/xenial/ xenial contrib" > /etc/apt/sources.list.d/treasure-data.list 
 
-RUN installpkg gcc make g++
+RUN installpkg gcc make g++ td-agent
 
 RUN td-agent-gem install \
   gelf \

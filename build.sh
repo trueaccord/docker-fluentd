@@ -1,5 +1,4 @@
 #!/bin/bash
-SHORTREV=`git rev-parse --short HEAD`
 FULLID="rev_${REV}_${TRAVIS_BUILD_NUMBER}"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
